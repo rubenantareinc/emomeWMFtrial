@@ -1,12 +1,31 @@
 import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 
+const siteTitle = "Emome WMF 2026 Character Quiz";
+const siteDescription = "Discover how you naturally show up in relationships with the official Emome WMF 2026 character quiz.";
+
 export const metadata: Metadata = {
-  title: "Which Emome character are you?",
-  description: "Discover how you naturally show up in relationships with the WMF 2026 Emome character quiz.",
+  title: siteTitle,
+  description: siteDescription,
+  applicationName: "Emome WMF Quiz",
+  icons: {
+    icon: [
+      { url: "/emome-icon.png", type: "image/png" },
+      { url: "/emome-heart.png", type: "image/png" },
+    ],
+    apple: [{ url: "/emome-icon.png", type: "image/png" }],
+  },
   openGraph: {
-    title: "Which Emome character are you?",
-    description: "Take the one-minute Emome WMF quiz and meet your relationship character.",
+    title: siteTitle,
+    description: siteDescription,
+    type: "website",
+    images: [{ url: "/emome-icon.png", width: 512, height: 512, alt: "Emome icon" }],
+  },
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
     images: ["/emome-icon.png"],
   },
 };
@@ -18,7 +37,7 @@ export const viewport: Viewport = {
   themeColor: "#fff7ef",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
       <body>{children}</body>

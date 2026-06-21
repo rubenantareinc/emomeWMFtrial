@@ -1,6 +1,11 @@
 # Emome WMF 2026 Character Quiz
 
-This repository is a standalone, event-specific Emome microsite for WMF 2026. It is separate from the production Emome application and is designed for visitors who scan a booth QR code, complete a short personality quiz, and discover their Emome relationship character.
+This repository is the standalone Emome WMF 2026 microsite. It is separate from the production Emome application and is optimized for booth visitors who scan a QR code, complete a short personality quiz, and discover their Emome relationship character.
+
+## Runtime used for validation
+
+- Node.js: `v24.15.0`
+- npm: use the version bundled with the active Node.js runtime
 
 ## Purpose
 
@@ -13,42 +18,63 @@ The microsite starts at `/` and guides visitors through four states:
 
 The core quiz collects no personal data and requires no authentication, Supabase, Stripe, database, API request, cookies, or environment variables.
 
-## Local setup
+## Commands
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-## Development
+Run locally:
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
-
-## Build
+Lint:
 
 ```bash
-npm run build
+npm run lint
 ```
 
-Optional TypeScript validation:
+Type-check:
 
 ```bash
 npm run type-check
 ```
 
-## Deployment
+Build:
 
-Deploy this repository as a standard Next.js App Router project on Vercel or another compatible host. No environment variables are required for the quiz route. If analytics or other optional services are added later, they must not block the quiz flow.
+```bash
+npm run build
+```
+
+Open `http://localhost:3000` during development.
+
+## Vercel deployment
+
+Deploy this repository as a standard Next.js App Router project on Vercel.
+
+- Framework preset: Next.js
+- Build command: `npm run build`
+- Install command: `npm install` or Vercel default
+- Output directory: managed by Next.js/Vercel
+- Environment variables: none required for the quiz route
+
+If optional analytics or external services are added later, they must not block the quiz flow or introduce mandatory environment variables.
+
+## Optional booth/kiosk mode
+
+Append `?kiosk=1` to the URL to enable booth reset mode. When a result screen is idle for roughly 60 seconds, the microsite shows a subtle countdown and automatically returns to the landing screen. Regular visitors without `?kiosk=1` are unaffected.
 
 ## Important files
 
-- `app/page.tsx` — complete landing, quiz, loading, result, sharing, retry, and Discover Emome experience.
+- `app/page.tsx` — complete landing, quiz, loading, result, sharing, retry, and optional kiosk-mode experience.
+- `app/layout.tsx` — metadata, Open Graph, Twitter, icon, viewport, and theme-color configuration.
 - `lib/ocean.ts` — 10 OCEAN questions and local `scoreOcean` scoring logic.
 - `lib/characters.ts` — typed character descriptions, trait-to-character mapping, visual accents, character image paths, and the main Emome website URL.
-- `public/` — approved Emome logo, character art, and supporting brand assets.
+- `public/` — approved Emome logo, icon, heart animation, and character artwork.
 
 ## Character descriptions and image mappings
 
@@ -57,7 +83,7 @@ Character copy and image mappings are centralized in `lib/characters.ts`. Update
 Current character artwork paths:
 
 - Explorer: `/explorer.png`
-- Architect: `/harmonizer.png`
+- Architect: `/harmonizer.png` — approved internal artwork filename; the visitor-facing result remains Architect.
 - Spark: `/spark.png`
 - Anchor: `/anchor.png`
 - Sentinel: `/sentinel.png`

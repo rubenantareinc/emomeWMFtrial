@@ -19,6 +19,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 button, a { -webkit-tap-highlight-color: transparent; }
+button:disabled { cursor: not-allowed; }
+
+@supports (padding: max(0px)) {
+  .safe-page-padding {
+    padding-top: max(1.25rem, env(safe-area-inset-top));
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-bottom-padding {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

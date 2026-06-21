@@ -17,6 +17,9 @@ export type EmomeCharacter = {
   glow: string;
 };
 
+// Character image mapping uses the approved repository artwork in public/.
+// Architect intentionally uses the approved harmonizer.png asset while keeping
+// the user-facing result label as Architect.
 export const CHARACTERS_BY_TRAIT: Record<OceanTrait, EmomeCharacter> = {
   O: {
     name: "Explorer",

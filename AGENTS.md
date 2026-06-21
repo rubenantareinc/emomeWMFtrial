@@ -7,6 +7,7 @@ This repository is a standalone WMF 2026 event microsite. The root route (`/`) m
 ## Important files
 
 - `app/page.tsx` — full visitor journey and UI states.
+- `app/layout.tsx` — metadata, viewport, theme, and social preview configuration.
 - `lib/ocean.ts` — quiz questions and scoring logic.
 - `lib/characters.ts` — character copy, trait mappings, asset paths, and `EMOME_WEBSITE_URL`.
 - `public/` — approved Emome brand and character assets.
@@ -15,12 +16,21 @@ This repository is a standalone WMF 2026 event microsite. The root route (`/`) m
 
 - `npm install`
 - `npm run dev`
+- `npm run lint`
 - `npm run type-check`
 - `npm run build`
 
 ## Build validation requirements
 
-Before finishing changes, run `npm run build` and the functional lint/type-check command if available. Fix broken imports, missing assets, and TypeScript errors.
+Before declaring work complete, future agents must run and pass:
+
+```bash
+npm run lint
+npm run type-check
+npm run build
+```
+
+Fix broken imports, missing assets, TypeScript errors, ESLint errors, and production build failures before finishing.
 
 ## Product guardrails
 
