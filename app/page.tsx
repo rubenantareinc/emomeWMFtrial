@@ -38,9 +38,9 @@ export default function Home() {
   const [isAdvancing, setIsAdvancing] = useState(false);
   const [isKioskMode, setIsKioskMode] = useState(false);
   const [kioskCountdown, setKioskCountdown] = useState(KIOSK_RESET_SECONDS);
-  const advanceTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
-  const revealTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
-  const kioskIntervalRef = useRef<ReturnType<typeof window.setInterval> | null>(null);
+  const advanceTimerRef = useRef<number | null>(null);
+  const revealTimerRef = useRef<number | null>(null);
+  const kioskIntervalRef = useRef<number | null>(null);
 
   const answeredCount = Object.keys(answers).length;
   const currentProgress = stage === "result" || stage === "loading" ? 100 : Math.round((questionIndex / OCEAN_QUESTIONS.length) * 100);
