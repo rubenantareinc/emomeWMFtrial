@@ -44,7 +44,6 @@ export default function Home() {
 
   const answeredCount = Object.keys(answers).length;
   const currentProgress = stage === "result" || stage === "loading" ? 100 : Math.round((questionIndex / OCEAN_QUESTIONS.length) * 100);
-  const question = OCEAN_QUESTIONS[questionIndex];
   const character = resultTrait ? CHARACTERS_BY_TRAIT[resultTrait] : null;
 
   const clearAdvanceTimer = useCallback(() => {
